@@ -40,14 +40,12 @@ export function initRouter(container: Element) {
       }
     }
   }
-
-  if (location.pathname == "/") {
+  if (location.pathname == "/desafio-m5/") {
     goTo("/home");
   } else {
-    handleRoute(location.pathname);
+    handleRoute(location.pathname.replace("/desafio-m5", ""));
   }
-
   window.onpopstate = () => {
-    handleRoute(location.pathname);
+    handleRoute(location.pathname.replace("/desafio-m5", ""));
   };
 }
