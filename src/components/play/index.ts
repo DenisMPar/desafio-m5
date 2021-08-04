@@ -1,9 +1,16 @@
+const imgpiedra = require("url:../../img/piedra.svg");
+const imgpapel = require("url:../../img/papel.svg");
+const imgtijera = require("url:../../img/tijera.svg");
+
 customElements.define(
   "my-play",
   class Play extends HTMLElement {
     shadow: ShadowRoot;
     type: String;
     rotate: boolean;
+    imgpiedra: string;
+    imgtijera: string;
+    imgpapel: string;
     constructor() {
       super();
       this.shadow = this.attachShadow({ mode: "open" });
@@ -14,9 +21,6 @@ customElements.define(
       this.render();
     }
     render() {
-      const piedraImgUrl = require("url:../../img/piedra.svg");
-      const papelImgUrl = require("url:../../img/papel.svg");
-      const tijeraImgUrl = require("url:../../img/tijera.svg");
       const style = document.createElement("style");
       style.innerHTML = `
                .play{
@@ -38,19 +42,19 @@ customElements.define(
       if (this.type == "piedra") {
         const imgPlayEl = document.createElement("img");
         imgPlayEl.className = "img";
-        imgPlayEl.src = piedraImgUrl;
+        imgPlayEl.src = imgpiedra;
         playEl.appendChild(imgPlayEl);
       }
       if (this.type == "tijera") {
         const imgPlayEl = document.createElement("img");
         imgPlayEl.className = "img";
-        imgPlayEl.src = tijeraImgUrl;
+        imgPlayEl.src = imgtijera;
         playEl.appendChild(imgPlayEl);
       }
       if (this.type == "papel") {
         const imgPlayEl = document.createElement("img");
         imgPlayEl.className = "img";
-        imgPlayEl.src = papelImgUrl;
+        imgPlayEl.src = imgpapel;
         playEl.appendChild(imgPlayEl);
       }
       if (this.rotate) {
