@@ -53,9 +53,9 @@ customElements.define(
         imgPlayEl.src = papelImgUrl;
         playEl.appendChild(imgPlayEl);
       }
-      if (this.rotate) {
-        playEl.classList.add("rotate");
-      }
+      // if (this.rotate) {
+      //   playEl.classList.add("rotate");
+      // }
       this.shadow.appendChild(playEl);
       this.shadow.appendChild(style);
     }
