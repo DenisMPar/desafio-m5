@@ -79,22 +79,13 @@ body::-webkit-scrollbar {
   justify-content: space-evenly;
   align-items: center;
 }
-
-.game__container-play-piedra,
-.game__container-play-papel,
-.game__container-play-tijera {
-  opacity: 80%;
+.game__container-play {
   width: 103px;
-  height: 225px;
+  height: 235px;
 }
-
-.game__container-play-piedra:hover,
-.game__container-play-papel:hover,
-.game__container-play-tijera:hover {
-  opacity: 100%;
-  flex-grow: 4;
-  height: 260px;
-  width: 103px;
+.game__container-play.click {
+  border: solid 6px rgb(96, 204, 96);
+  border-radius: 6px;
 }
 
 .game__time-over-text {

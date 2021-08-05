@@ -8,9 +8,6 @@ customElements.define(
     shadow: ShadowRoot;
     type: String;
     rotate: boolean;
-    imgpiedra: string;
-    imgtijera: string;
-    imgpapel: string;
     constructor() {
       super();
       this.shadow = this.attachShadow({ mode: "open" });
@@ -23,39 +20,29 @@ customElements.define(
     render() {
       const style = document.createElement("style");
       style.innerHTML = `
+      *{
+        
+      }
                .play{
+                overflow: auto
                    width:100%;
                    height:100%;
                }
-              .img{
-                  width:100%;
-                  height:100%;
-              }
               .rotate{
                 transform: rotate(-180deg);
               }
               `;
-      const playEl = document.createElement("div");
+      const playEl = document.createElement("img");
       playEl.classList.add("play");
-
       //condicionales que eligen la imagen correspondiente a cada tipo de jugada
       if (this.type == "piedra") {
-        const imgPlayEl = document.createElement("img");
-        imgPlayEl.className = "img";
-        imgPlayEl.src = imgpiedra;
-        playEl.appendChild(imgPlayEl);
-      }
-      if (this.type == "tijera") {
-        const imgPlayEl = document.createElement("img");
-        imgPlayEl.className = "img";
-        imgPlayEl.src = imgtijera;
-        playEl.appendChild(imgPlayEl);
+        playEl.src = imgpiedra;
       }
       if (this.type == "papel") {
-        const imgPlayEl = document.createElement("img");
-        imgPlayEl.className = "img";
-        imgPlayEl.src = imgpapel;
-        playEl.appendChild(imgPlayEl);
+        playEl.src = imgpapel;
+      }
+      if (this.type == "tijera") {
+        playEl.src = imgtijera;
       }
       if (this.rotate) {
         playEl.classList.add("rotate");

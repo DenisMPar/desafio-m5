@@ -6,14 +6,14 @@ export function initPageGame(params) {
   <div class="game__container-count">
   </div>
  <div class="game__container-plays">
- <div class="game__container-play-piedra">
- <my-play type="piedra"></my-play>
+ <div class="game__container-play" type="piedra">
+ <my-play type="piedra" class="game__my-play"></my-play>
  </div>
- <div class="game__container-play-tijera">
- <my-play type="tijera"></my-play>
+ <div class="game__container-play" type="tijera">
+ <my-play type="tijera" class="game__my-play"></my-play>
  </div>
- <div class="game__container-play-papel">
- <my-play type="papel"></my-play>
+ <div class="game__container-play" type="papel">
+ <my-play type="papel" class="game__my-play"></my-play>
  </div>
  </div>
   `;
@@ -65,9 +65,10 @@ export function initPageGame(params) {
   //El evento guarda las jugadas en el state con el metodo setgame
   //tiene un settimeout para se alcance a ver el cambio de estilo de la jugada elegida
   //cambia el estado de click para evitar la pagina de timeout
-  const playsEls = div.querySelectorAll("my-play");
+  const playsEls = div.querySelectorAll(".game__container-play");
   for (const p of playsEls) {
     p.addEventListener("click", (e) => {
+      p.classList.add("click");
       const target = e.target as any;
       state.setGame(target.type);
       setTimeout(() => {
