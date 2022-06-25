@@ -17,18 +17,6 @@ const state = {
     //jugada player
     const currentState = this.getState();
     currentState.currentGame.miPlay = movePlayer;
-    //jugada pc
-    const random = Math.floor(Math.random() * (0 - 3)) + 3;
-    const jugadas = [
-      { random: 0, play: "piedra" },
-      { random: 1, play: "papel" },
-      { random: 2, play: "tijera" },
-    ];
-    for (const j of jugadas) {
-      if (j.random == random) {
-        currentState.currentGame.computerPlay = j.play;
-      }
-    }
     this.setState(currentState);
   },
   setHistory(game: Game) {
@@ -65,19 +53,19 @@ const state = {
     localStorage.setItem("state", JSON.stringify(newState));
   },
   //calcula quien gano la partida. 0 para pc, 1 para player y 2 para empate
-  whoWins(myPlay: Jugada, computerPlay: Jugada) {
+  whoWins(myPlay: Jugada, playerTwoPlay: Jugada) {
     let winner = 0;
     const jugadasGanadoras = [
-      { myPlay: "piedra", computerPlay: "tijera" },
-      { myPlay: "papel", computerPlay: "piedra" },
-      { myPlay: "tijera", computerPlay: "papel" },
+      { myPlay: "piedra", playerTwoPlay: "tijera" },
+      { myPlay: "papel", playerTwoPlay: "piedra" },
+      { myPlay: "tijera", playerTwoPlay: "papel" },
     ];
     for (const j of jugadasGanadoras) {
-      if (j.myPlay == myPlay && j.computerPlay == computerPlay) {
+      if (j.myPlay == myPlay && j.playerTwoPlay == playerTwoPlay) {
         winner = 1;
       }
     }
-    if (myPlay == computerPlay) {
+    if (myPlay == playerTwoPlay) {
       winner = 2;
     }
     return winner;
